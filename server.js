@@ -6,6 +6,7 @@ import routes from './routes';
 import errorHandler from "./middlewares/errorHandler";
 import responseHandler from "./middlewares/responseHandler";
 import CustomErrorHandler from "./Service/CustomErrorHandler";
+import cors from 'cors'
  import path  from "path";
 mongoose.connect(DB_URL)
 // .then(()=>{console.log('sdsd')})
@@ -19,6 +20,7 @@ global.appRoot = path.resolve(__dirname);
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 app.use(responseHandler)
+app.use(cors())
 app.use('/api',routes)
 app.use(errorHandler)
 
